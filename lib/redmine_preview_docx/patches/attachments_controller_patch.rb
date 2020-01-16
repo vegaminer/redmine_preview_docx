@@ -29,7 +29,9 @@ module RedminePreviewDocx
         base.class_eval do
           unloadable
             
-          alias_method_chain     :show, :docx
+          #alias_method_chain     :show, :docx
+	  alias_method :show_without_docx, :show
+	  alias_method :show, :show_with_docx
          
           alias_method           :find_attachment_for_preview_docx, :find_attachment
           before_action          :find_attachment_for_preview_docx, :only => [:preview_docx]
